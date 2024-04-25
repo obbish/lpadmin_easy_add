@@ -5,7 +5,8 @@ what's this?
 
 how to use?
 -------------------
-- set up your printers under row 15 "# Set printer information..." 
+- define printer names under row 3
+- specify printer details under row 20 
 - save your modified version as printer_installation.sh or something nicer
 
 - make sure the users have installed the corresponing PPDs on their computer
