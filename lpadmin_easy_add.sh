@@ -35,7 +35,7 @@ case $choice in
         printer_driver="/path/to/printer3/PPD"
         ;;
     *)
-        echo "Invalid choice. Please enter 1, 2, or 3."
+        echo "We don't have $choice here yet, exiting..."
         exit 1
         ;;
 esac
