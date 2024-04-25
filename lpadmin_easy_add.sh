@@ -22,7 +22,7 @@ while true; do
 
     echo
     echo "Printers available:"
-	echo
+    echo
     echo "	1." 
     echo "	Name: $printer1"
     echo "	Location: $printer1_location"
@@ -65,9 +65,10 @@ done
 
 # Run lpadmin with your customizations, error check, and finish
 
-	echo
-	echo "Installing printer: "$user_input". "$printer_name"... "
-	echo
+echo
+echo "Installing printer: "$user_input". "$printer_name"... "
+echo
+
 if lpadmin -p "$printer_name" -E -v "$printer_device" -m "$printer_driver" -L "$printer_location" -o printer-is-shared="$printer_is_shared" 2>&1; then
     echo
     echo "Script completed." 
