@@ -35,7 +35,7 @@ case $choice in
         printer_driver="/path/to/printer3/PPD"
         ;;
     *)
-        echo "We don't have $choice here yet, exiting..."
+        echo "We don't have $choice here yet, now exiting..."
         exit 1
         ;;
 esac
