@@ -1,6 +1,6 @@
 what's this?
 -------------------
-- generec bash script that lets your users install pre-defined printers easily
+- generic bash script that lets your users install pre-defined printers easily
 
 
 how to use?
