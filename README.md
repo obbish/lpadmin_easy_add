@@ -1,7 +1,7 @@
 what's this?
 -------------------
 - generic bash script that lets your users install any number of pre-defined printers easily
-- 
+  
 
 how to use?
 -------------------
