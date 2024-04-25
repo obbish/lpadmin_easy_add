@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define printer names
-printer1="Printer 1"
+printer1="5321X114787"
 printer2="Printer 2"
 printer3="Printer 3"
 
@@ -21,18 +21,18 @@ printer_driver=""
 case $choice in
     1)
         printer_name="$printer1"
-        printer_device="/dev/usb/lp0"
-        printer_driver="driver/for/printer1"
+        printer_device="lpd://printer1-hostname"
+        printer_driver="/path/to/printer3/PPD"
         ;;
     2)
         printer_name="$printer2"
-        printer_device="/dev/usb/lp1"
-        printer_driver="driver/for/printer2"
+        printer_device="smb://printer2-hostname"
+        printer_driver="/path/to/printer2/PPD"
         ;;
     3)
         printer_name="$printer3"
-        printer_device="/dev/usb/lp2"
-        printer_driver="driver/for/printer3"
+        printer_device="ipp://printer3-hostname"
+        printer_driver="/path/to/printer3/PPD"
         ;;
     *)
         echo "Invalid choice. Please enter 1, 2, or 3."
@@ -44,5 +44,5 @@ esac
 if lpadmin -p "$printer_name" -E -v "$printer_device" -m "$printer_driver" 2>&1; then
     echo "$printer_name has been installed successfully."
 else
-    echo "Error: Failed to install $printer_name. Error message: $output"
+    echo "Error: Failed to install $printer_name, check your logfile by runnning "tail /var/log/cups/error_log""
 fi
