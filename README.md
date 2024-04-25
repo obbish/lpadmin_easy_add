@@ -6,8 +6,8 @@ what's this?
 how to use?
 -------------------
 - configure
-  - define printer names from row 3: # Define printer names
-  - specify printer details from row 20: # Set printer information based on user choice
+  - define printer names from section # Define printer names
+  - specify printer details from section # Set printer information based on user choice
   - save your modified script as scriptname.sh
   
 - run
