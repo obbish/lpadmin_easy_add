@@ -1,48 +1,85 @@
 #!/bin/bash
 
-# Define printer names
-printer1="Printer 1"
-printer2="Printer 2"
-printer3="Printer 3"
+# Define printers and customizations
 
-# Prompt user to choose a printer
-echo "Choose a printer to install:"
-echo "1. $printer1"
-echo "2. $printer2"
-echo "3. $printer3"
-read -p "Enter your choice (1, 2, or 3): " choice
+# Printer1
+printer1="5321X114787"
+printer1_device="lpd://5321X114787.eduprint.stockholm.se"
+printer1_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
+printer1_location="B407"
+printer1_is_shared="false"
 
-# Variables to store printer information
-printer_name=""
-printer_device=""
-printer_driver=""
+# Printer 2
+printer2="5323X136622"
+printer2_device="lpd://5323X136622.eduprint.stockholm.se"
+printer2_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
+printer2_location="B307"
+printer2_is_shared="false"
 
-# Set printer information based on user choice
-case $choice in
-    1)
-        printer_name="$printer1"
-        printer_device="lpd://printer1-hostname"
-        printer_driver="/path/to/printer3/PPD"
-        ;;
-    2)
-        printer_name="$printer2"
-        printer_device="smb://printer2-hostname"
-        printer_driver="/path/to/printer2/PPD"
-        ;;
-    3)
-        printer_name="$printer3"
-        printer_device="ipp://printer3-hostname"
-        printer_driver="/path/to/printer3/PPD"
-        ;;
-    *)
-        echo "We don't have $choice here yet, now exiting..."
-        exit 1
-        ;;
-esac
+while true; do
 
-# Install the selected printer and check for errors
-if lpadmin -p "$printer_name" -E -v "$printer_device" -m "$printer_driver" 2>&1; then
-    echo "$printer_name has been installed successfully."
+    # Prompt user to choose a printer, or exit
+
+    echo
+    echo "Printers available:"
+	echo
+    echo "	1." 
+    echo "	Name: $printer1"
+    echo "	Location: $printer1_location"
+    echo
+    echo "	2."
+    echo "	Name: $printer2"
+    echo "	Location: $printer2_location"
+    echo
+    read -p "Enter a choice (1, 2), or type 'exit' to quit: " user_input
+
+    case $user_input in
+        1)
+            printer_name="$printer1"
+            printer_device="$printer1_device"
+            printer_driver="$printer1_driver"
+            printer_location="$printer1_location"
+            printer_is_shared="$printer1_is_shared"
+            break
+            ;;
+        2)
+            printer_name="$printer2"
+            printer_device="$printer2_device"
+            printer_driver="$printer2_driver"
+            printer_location="$printer2_location"
+            printer_is_shared="$printer2_is_shared"
+            break
+            ;;
+        exit)
+			echo
+            echo "Script exited."
+            echo
+            exit 0
+            ;;
+        *)
+            echo
+            echo "Invalid input '"$user_input"'."
+            ;;
+    esac
+done
+
+# Run lpadmin with your customizations, error check, and finish
+
+	echo
+	echo "Installing printer: "$user_input". "$printer_name"... "
+	echo
+if lpadmin -p "$printer_name" -E -v "$printer_device" -m "$printer_driver" -L "$printer_location" -o printer-is-shared="$printer_is_shared" 2>&1; then
+    echo
+    echo "Script completed." 
+    echo
+    
 else
-    echo "Error: Failed to install $printer_name, check your logfile by runnning "tail /var/log/cups/error_log""
+    echo
+    echo "An error occurred while installing "$user_input". "$printer_name"... "
+    echo
+    echo "CUPS logfile reads:"
+    tail /var/log/cups/error_log
+    echo
+    echo "Script failed."
+    echo
 fi
