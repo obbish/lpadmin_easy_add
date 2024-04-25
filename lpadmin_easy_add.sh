@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define printer names
-printer1="5321X114787"
+printer1="Printer 1"
 printer2="Printer 2"
 printer3="Printer 3"
 
