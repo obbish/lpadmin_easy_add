@@ -1,12 +1,12 @@
 what's this?
 -------------------
-lets the user select a pre-defined printer and runs lpadmin to install it
+generec bash script that lets your users install pre-defined printers easily
 
 
 how to use?
 -------------------
-edit your printers under row 15 "Set printer information..." 
-and make sure the users have installed the PPDs on their computer.
+- edit your printers under row 15 "Set printer information..." 
+- make sure the users have installed the PPDs on their computer
 
-save your modified version as printer_installation.sh or something,
-and make sure it's executable, and try it out
+- save your modified version as printer_installation.sh or something nicer
+- make sure it's executable by
