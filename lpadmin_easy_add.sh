@@ -1,6 +1,17 @@
 #!/bin/bash
 
-# Define printers and customizations
+# To accommodate more printers,
+# copy from existing rows and update
+# numbers and parameters in sections:
+#
+# a) printer definitions
+# b) selection menu
+# c) choices
+#
+# For troubleshooting remove '2>/dev/null'
+
+# Define printers and customizations. 
+
 printer1="5321X114787"
 printer1_device="lpd://5321X114787.eduprint.stockholm.se"
 printer1_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
@@ -13,7 +24,7 @@ printer2_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
 printer2_location="B307"
 printer2_is_shared="false"
 
-# Function to add printer
+# This function adds the printer
 install_printer() {
     local name="$1"
     local device="$2"
@@ -33,7 +44,8 @@ install_printer() {
     fi
 }
 
-# Function to display printer selection menu
+# This function displays the printer selection menu
+
 display_printer_menu() {
     clear
     echo
@@ -44,7 +56,8 @@ display_printer_menu() {
     echo
 }
 
-# Loop to allow selecting multiple printers
+# This allows the user to choose a printer to install, then loops back
+
 while true; do
     display_printer_menu
 
@@ -55,10 +68,12 @@ while true; do
         1)
             install_printer "$printer1" "$printer1_device" "$printer1_driver" "$printer1_location" "$printer1_is_shared"
             ;;
+
         2)
             install_printer "$printer2" "$printer2_device" "$printer2_driver" "$printer2_location" "$printer2_is_shared"
             ;;
-        "done")
+
+	"done")
             
 	    clear
             echo
