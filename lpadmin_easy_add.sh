@@ -24,7 +24,6 @@ install_printer() {
     clear
     echo
     echo "Adding printer '$name'..."
-# Add the selected printer with lpadmin and dismiss errors and warnings
     if lpadmin -p "$name" -E -v "$device" -m "$driver" -L "$location" -o printer-is-shared="$is_shared" 2>/dev/null; then
      	echo "Adding printer '$name' was a success ✓"
 
