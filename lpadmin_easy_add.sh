@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# All under CC0 1.0 Universal License
+#
 # To accommodate more printers,
 # copy from existing rows and update
 # numbers and parameters in sections:
@@ -10,7 +12,9 @@
 #
 # For troubleshooting remove '2>/dev/null'
 
-# Define printers and customizations. 
+
+
+# Define printers and options
 
 printer1="5321X114787"
 printer1_device="lpd://5321X114787.eduprint.stockholm.se"
