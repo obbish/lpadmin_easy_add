@@ -42,7 +42,7 @@ display_printer_menu() {
     echo
     echo " 1. $printer1 (Location: $printer1_location)"
     echo " 2. $printer2 (Location: $printer2_location)"
-	echo
+    echo
 }
 
 # Loop to allow selecting multiple printers
@@ -60,7 +60,8 @@ while true; do
             install_printer "$printer2" "$printer2_device" "$printer2_driver" "$printer2_location" "$printer2_is_shared"
             ;;
         "done")
-            clear
+            
+	    clear
             echo
 			echo "Done adding printers!"
 			echo "Please print responsibly."
