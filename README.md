@@ -1,6 +1,6 @@
 what's this?
 -------------------
-- a bash script that lets you: 
+- a terminal script that lets you: 
   - add printers via a selection menu
   - pre-define what printers to choose from
   - keep adding printers until you are done 
