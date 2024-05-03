@@ -1,55 +1,55 @@
 #!/bin/bash
 
-# All under CC0 1.0 Universal License
-#
 # To accommodate more printers,
 # copy from existing rows and update
 # numbers and parameters in sections:
-#
+
 # a) printer definitions
 # b) selection menu
 # c) choices
-#
-# For troubleshooting remove '2>/dev/null'
 
+# For troubleshooting remove "2>/dev/null"
+# For further support run "man lpupdate"
 
 
 # Define printers and options
-
-printer1="5321X114787"
-printer1_device="lpd://5321X114787.eduprint.stockholm.se"
-printer1_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
-printer1_location="B407"
+printer1_name="Name_of_printer1"
+printer1_device="URI"
+printer1_driver="/path/to/PPD/file"
+printer1_location="Lobby"
 printer1_is_shared="false"
 
-printer2="5323X136622"
-printer2_device="lpd://5323X136622.eduprint.stockholm.se"
-printer2_driver="/Library/Printers/PPDs/Contents/Resources/RICOH P C600"
-printer2_location="B307"
+printer2_name="Name_of_printer2"
+printer2_device="URI"
+printer2_driver="/path/to/PPD/file"
+printer2_location="Accounting office"
 printer2_is_shared="false"
 
 # This function adds the printer
 install_printer() {
-    local name="$1"
-    local device="$2"
-    local driver="$3"
-    local location="$4"
-    local is_shared="$5"
+    local name="$0"
+    local device="$1"
+    local driver="$2"
+    local location="$3"
+    local is_shared="$4"
 
     clear
     echo
     echo "Adding printer '$name'..."
-    if lpadmin -p "$name" -E -v "$device" -m "$driver" -L "$location" -o printer-is-shared="$is_shared" 2>/dev/null; then
-     	echo "Adding printer '$name' was a success ✓"
+    
+    if lpadmin -p "$name" -E -v "$device" -m "$driver" -L "$location" -o printer-is-shared="$is_shared" 2>/dev/null;
+    
+    then
+     	echo "Adding printer '$name' was a success."
 
     else
-     	echo "Adding printer '$name' was a failure ❌" 
+     	echo "Adding printer '$name' was a failure." 
      	echo "stderr suppressed; check CUPS error log for details."
+      
     fi
 }
 
 # This function displays the printer selection menu
-
 display_printer_menu() {
     clear
     echo
@@ -61,7 +61,6 @@ display_printer_menu() {
 }
 
 # This allows the user to choose a printer to install, then loops back
-
 while true; do
     display_printer_menu
 
@@ -70,11 +69,11 @@ while true; do
 
     case $choice in
         1)
-            install_printer "$printer1" "$printer1_device" "$printer1_driver" "$printer1_location" "$printer1_is_shared"
+            install_printer "$printer1_name" "$printer1_device" "$printer1_driver" "$printer1_location" "$printer1_is_shared"
             ;;
 
         2)
-            install_printer "$printer2" "$printer2_device" "$printer2_driver" "$printer2_location" "$printer2_is_shared"
+            install_printer "$printer2_name" "$printer2_device" "$printer2_driver" "$printer2_location" "$printer2_is_shared"
             ;;
 
 	"done")
