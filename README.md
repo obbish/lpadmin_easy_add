@@ -1,6 +1,9 @@
 what's this?
 -------------------
-- generic bash script that lets your users install any number of pre-defined printers easily
+- a bash script that lets you: 
+  - add printers via a selection menu
+  - pre-define what printers to choose from
+  - keep adding printers until you are done 
   
 
 how to use?
