@@ -7,7 +7,7 @@ how to use?
 -------------------
 - first configure it like this
   - copy the script to your computer, name it scriptname.sh
-  - define your printers printers in the first section
+  - open in text editor to define your specific printers
   - the script has instructions how to modify for more printers
   
 - then use it like this
