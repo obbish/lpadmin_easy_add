@@ -3,8 +3,8 @@
 
 # To accommodate for more printers,
 # just copy the rows of an existing printer,
-# and update with a new number, 
-# in the sections:
+# and update with a new number(s), 
+# in these sections:
 #
 # a) printer definitions
 # b) selection menu
@@ -36,14 +36,37 @@ display_printer_menu() {
     echo
     echo "List of available printers:"
     echo
-    echo " 1. $printer1 (Location: $printer1_location)"
-    echo " 2. $printer2 (Location: $printer2_location)"
+    echo " 1. $printer1_name (Location: $printer1_location)"
+    echo " 2. $printer2_name (Location: $printer2_location)"
     echo
     
 }
 
+# This adds the printer using lpadmin with error checking, then returns user to the menu
+install_printer() {
+    local name="$1"
+    local device="$2"
+    local driver="$3"
+    local location="$4"
+    local is_shared="$5"
 
-# c) choices - This makes the printers availble and allows the user to make a choice
+    clear
+    echo
+    echo "Adding printer '$name'..."
+    
+    if lpadmin -p "$name" -E -v "$device" -m "$driver" -L "$location" -o printer-is-shared="$is_shared" 2>/dev/null;
+    
+    then
+     	echo "Adding printer '$name' was a success."
+
+    else
+     	echo "Adding printer '$name' was a failure." 
+     	echo "stderr suppressed; check CUPS error log for details."
+      
+    fi
+}
+
+# c) choices - This makes the printers availble and allows for the choices specified
 while true; do
     display_printer_menu
 
@@ -78,29 +101,5 @@ while true; do
 	
 	echo
     read -p "Press Enter to continue..."
+    
 done
-
-
-# Lastly, this adds the printer using lpadmin, checks if it worked, then returns user to the menu
-install_printer() {
-    local name="$0"
-    local device="$1"
-    local driver="$2"
-    local location="$3"
-    local is_shared="$4"
-
-    clear
-    echo
-    echo "Adding printer '$name'..."
-    
-    if lpadmin -p "$name" -E -v "$device" -m "$driver" -L "$location" -o printer-is-shared="$is_shared" 2>/dev/null;
-    
-    then
-     	echo "Adding printer '$name' was a success."
-
-    else
-     	echo "Adding printer '$name' was a failure." 
-     	echo "stderr suppressed; check CUPS error log for details."
-      
-    fi
-}
