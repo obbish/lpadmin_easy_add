@@ -5,12 +5,12 @@ what's this?
 
 how to use?
 -------------------
-- configure it
-  - define printer names from section # Define printer names
-  - specify printer details from section # Set printer information based on user choice
-  - save your modified script as scriptname.sh
+- first configure it like this
+  - copy the script to your computer, name it scriptname.sh
+  - define your printers printers in the first section
+  - the script has instructions how to modify for more printers
   
-- use it
+- then use it like this
   - open terminal
   - make it executable with "chmod +x scriptname.sh"
   - run it with "./scriptname.sh" or double click in finder
