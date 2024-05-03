@@ -11,4 +11,6 @@ how to use?
   - save your modified script as scriptname.sh
   
 - use it
-  - make it executable and run ./scriptname.sh from terminal, or double click in finder
+  - open terminal
+  - make it executable with "chmod +x scriptname.sh"
+  - run it with "./scriptname.sh" or double click in finder
