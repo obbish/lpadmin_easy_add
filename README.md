@@ -5,12 +5,12 @@ what's this?
 
 how to use?
 -------------------
-- first configure it like this
-  - copy the script to your computer, name it scriptname.sh
-  - open in text editor to define your specific printers
-  - the script has instructions how to modify for more printers
+- first configure it like this:
+  - copy or download the script lpadmin_easy_add.sh to your computer
+  - open with text editor and define your printers in the first section
+  - the script has further instructions how to modify for more printers
   
-- then use it like this
+- then use it like this:
   - open terminal
-  - make it executable with "chmod +x scriptname.sh"
-  - run it with "./scriptname.sh" or double click in finder
+  - make the script file executable with command "chmod +x scriptname.sh"
+  - run with "./scriptname.sh" or double click in Finder
